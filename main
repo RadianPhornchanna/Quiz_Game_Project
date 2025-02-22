@@ -1,0 +1,20 @@
+from question import Question
+from data import question_data
+from quiz_brain import Quiz_Brain
+
+question_list = []
+for question in question_data:
+    question_text = question["text"]
+    question_answer = question["answer"]
+    questions = Question(question_text,question_answer)
+    question_list.append(questions)
+
+
+
+
+
+
+quiz = Quiz_Brain(question_list)
+
+while quiz.end_question():
+    quiz.ask_question()
