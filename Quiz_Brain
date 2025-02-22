@@ -1,0 +1,23 @@
+class Quiz_Brain:
+    def __init__(self,q_list):
+        self.q_list = q_list
+        self.question_number = 0
+        self.score = 0
+
+    def ask_question(self):
+        current_question = self.q_list[self.question_number]
+        self.question_number += 1
+        guess = input(f"Q.{self.question_number}{current_question.text}")
+        self.check_answer(guess,current_question.answer)
+
+    def end_question(self):
+        return self.question_number < len(self.q_list)
+
+    def check_answer(self, guess, answer):
+        if guess.lower() == answer.lower():
+            print("right")
+            self.score += 1
+            print(f"Current score = {self.score}/{self.question_number}")
+        else:
+            print("wrong")
+            print(f"Current score = {self.score}/{self.question_number}")
